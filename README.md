@@ -1,5 +1,7 @@
 # Eisenhower Priority Matrix Web Application
 
+![Cover](images/cover.png)
+
 This project is a modern and multilingual web application that helps you prioritize your tasks using the Eisenhower Matrix. It stands out with its user-friendly interface, dynamic theme (light/dark), multi-language support, and intuitive task management.
 
 ## Features
