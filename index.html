@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eisenhower Görev Önceliklendirme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <style>
+    #intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: var(--main-bg-bright);
+      color: var(--text-bright);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: transform 1s ease-in-out;
+    }
+
+    body.dark #intro {
+      background: var(--main-bg-dark);
+      color: var(--text-dark);
+    }
+
+    .slide-up {
+      transform: translateY(-100%);
+    }
+
+    .logo-container {
+      width: 350px;
+      height: 350px;
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    .logo-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    .logo-container img.active {
+      opacity: 1;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+    
+    .intro-text h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      margin-top: 0.5rem;
+      line-height: 1.2;
+    }
+    
+    .intro-text .slogan {
+      font-size: 1rem;
+      color: var(--muted-bright);
+      margin-top: -1rem;
+    }
+
+    .loading-bar {
+      width: 300px;
+      height: 7px;
+      background: transparent;
+      border: 1px solid var(--text-bright);
+      border-radius: 500px;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-bar::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      transition: width var(--loading-duration, 3s) linear;
+    }
+
+    .loading-bar.loading::after {
+      width: 100%;
+    }
+
+    body.dark .loading-bar {
+      border-color: var(--text-dark);
+    }
+
+    #mainContent {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="intro">
+    <div class="logo-container">
+      <img src="welcome-images/logo1.png" alt="Welcome" class="active">
+      <img src="welcome-images/logo2.png" alt="Welcome">
+      <img src="welcome-images/logo3.png" alt="Welcome">
+      <img src="welcome-images/logo4.png" alt="Welcome">
+      <img src="welcome-images/logo5.png" alt="Welcome">
+      <img src="welcome-images/logo6.png" alt="Welcome">
+      <img src="welcome-images/logo7.png" alt="Welcome">
+    </div>
+    <div class="intro-text">
+      <h1>Eisenhower Görev Önceliklendirme Aracı</h1>
+      <div class="slogan">Önceliklerinizi kolayca yönetin, verimliliğinizi artırın.</div>
+    </div>
+    <div class="loading-bar"></div>
+  </div>
+
+  <div id="mainContent">
+    <nav class="navbar glass">
+      <div style="display:flex;align-items:center;">
+        <span class="logor"></span>
+        <div class="nav-title">
+          <h1 id="mainTitle">Eisenhower Görev Önceliklendirme Aracı</h1>
+          <div class="slogan" id="mainSlogan">Önceliklerinizi kolayca yönetin, verimliliğinizi artırın.</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <button id="themeToggle" class="theme-toggle">
+          <img src="images/moon-light-mode.png" alt="theme" class="light-icon">
+          <img src="images/moon-dark - mode.png" alt="theme" class="dark-icon" style="display:none;">
+        </button>
+        <div class="custom-select">
+          <div class="selected-option">
+            <img src="images/flags/turkey.png" alt="TR" class="flag-icon">
+            <span>Türkçe</span>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+          <div class="options">
+            <div class="option" data-value="tr">
+              <img src="images/flags/turkey.png" alt="TR" class="flag-icon">
+              <span>Türkçe</span>
+            </div>
+            <div class="option" data-value="en">
+              <img src="images/flags/united-kingdom.png" alt="EN" class="flag-icon">
+              <span>English</span>
+            </div>
+            <div class="option" data-value="de">
+              <img src="images/flags/germany.png" alt="DE" class="flag-icon">
+              <span>Deutsch</span>
+            </div>
+            <div class="option" data-value="es">
+              <img src="images/flags/spain.png" alt="ES" class="flag-icon">
+              <span>Español</span>
+            </div>
+            <div class="option" data-value="fr">
+              <img src="images/flags/france.png" alt="FR" class="flag-icon">
+              <span>Français</span>
+            </div>
+            <div class="option" data-value="ja">
+              <img src="images/flags/japan.png" alt="JA" class="flag-icon">
+              <span>日本語</span>
+            </div>
+            <div class="option" data-value="zh">
+              <img src="images/flags/china.png" alt="ZH" class="flag-icon">
+              <span>中文</span>
+            </div>
+            <div class="option" data-value="ch">
+              <img src="images/flags/switzerland.png" alt="CH" class="flag-icon">
+              <span>Schwizerdütsch</span>
+            </div>
+          </div>
+          <select id="langSelect" style="display: none;">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+            <option value="ch">Schwizerdütsch</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert" style="display: none;">
+      <div class="custom-alert-content glass">
+        <button id="closeAlert" class="close-alert">&times;</button>
+        <div id="alertMessage" class="alert-message"></div>
+        <div class="alert-buttons">
+          <button id="confirmBtn" class="alert-btn confirm-btn">Evet</button>
+          <button id="cancelBtn" class="alert-btn cancel-btn">Hayır</button>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section class="panel task-list glass">
+        <h2 id="taskListTitle">Görev Listesi</h2>
+        <div class="input-group">
+          <input type="text" id="taskInput" placeholder="Yeni görev girin...">
+          <button class="btn-main" onclick="addTask()" id="addTaskBtn">Ekle</button>
+        </div>
+        <div id="tasks"></div>
+        <div class="info-box" id="taskInfoBox" style="display:none;"></div>
+      </section>
+      <section class="panel priority-list glass">
+        <h2 id="priorityTitle">Öncelik Sıralaması</h2>
+        <div id="priority"></div>
+      </section>
+      <section class="panel graph glass">
+        <h2 id="graphTitle">Görev Dağılım Grafiği</h2>
+        <canvas id="matrixCanvas" width="400" height="400"></canvas>
+        <div id="tooltip" class="tooltip"></div>
+        <div class="region-explanation" id="regionExplanation">
+          <strong>Bölgeler:</strong>
+          <ul>
+            <li><b>Şimdi Yap</b></li>
+            <li><b>Planla</b></li>
+            <li><b>Yok Et</b></li>
+            <li><b>Delege Et</b></li>
+          </ul>
+          <span style="font-size:1.05em;">🔥 <b>Aciliyet:</b> 1-10</span>
+          <ul>
+            <li>8-10: Hemen yapılmalı</li>
+            <li>5-7: Yakında yapılmalı</li>
+            <li>3-4: Bu ay içinde</li>
+            <li>1-2: Bekleyebilir</li>
+          </ul>
+          <span style="font-size:1.05em;">⭐ <b>Önem:</b> 1-10</span>
+          <ul>
+            <li>8-10: Hedefle doğrudan ilgili</li>
+            <li>5-7: Gelişim için önemli</li>
+            <li>3-4: Faydalı ama şart değil</li>
+            <li>1-2: Rutin, başkası da yapabilir</li>
+          </ul>
+        </div>
+        <div class="info-box" id="graphInfoBox">Grafikte görevler aciliyet ve önem puanlarına göre konumlandırılır. Dört bölgeye ayrılır.</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Image rotation
+    const images = document.querySelectorAll('.logo-container img');
+    let currentImage = 0;
+
+    function rotateImages() {
+      images[currentImage].classList.remove('active');
+      currentImage = (currentImage + 1) % images.length;
+      images[currentImage].classList.add('active');
+    }
+
+    setInterval(rotateImages, 500);
+
+    // Loading bar and transition
+    const loadingBar = document.querySelector('.loading-bar');
+    loadingBar.classList.add('loading');
+
+    function startTransition() {
+      document.getElementById("intro").classList.add("slide-up");
+      setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      }, 1000);
+    }
+
+    // Add click event to skip intro
+    document.getElementById("intro").addEventListener('click', () => {
+      loadingBar.style.setProperty('--loading-duration', '0s');
+      loadingBar.classList.remove('loading');
+      loadingBar.classList.add('loading');
+      startTransition();
+    });
+
+    // Original timeout
+    setTimeout(startTransition, 3000);
+  </script>
+</body>
+</html> 
